@@ -1,0 +1,33 @@
+/*  
+    Remove the unit of a length
+    @param $number - Number to remove unit from
+    @return {Number} - Unitless number
+*/
+@function strip-unit($number) {
+    @if type-of($number) == "number" and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+    @return $number;
+}
+
+/*  
+    Generate several media-query declaration blocks
+    @param $property - Property to be declared
+    @param $min      - Minimum value
+    @param $from     - Width starting flow
+    @param $max      - Maximum value
+    @param $to       - Width stopping flow
+*/
+@mixin flow($property, $min, $from, $max, $to) {
+    @media (min-width: $from) {
+        #{$property}: calc(#{$min} + (#{strip-unit($max)} - #{strip-unit($min)}) * (100vw - #{$from}) / (#{strip-unit($to)} - #{strip-unit($from)}));
+    }
+
+    @media (max-width: $from) {
+        #{$property}: $min;
+    }
+
+    @media (min-width: $to) {
+        #{$property}: $max;
+    }
+}

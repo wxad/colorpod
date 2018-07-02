@@ -1,0 +1,11 @@
+.rate {
+    display: inline-block;
+    vertical-align: -2px;
+    margin-left: 8px;
+
+    svg {
+        &:not(:last-of-type) {
+            margin-right: 6px;
+        }
+    }
+}

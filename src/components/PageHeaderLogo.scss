@@ -1,0 +1,49 @@
+/* 
+    CSS Declaration Order:
+    1. Positioning 
+    2. Box-model 
+    3. Typography 
+    4. Visual 
+    5. Misc 
+*/
+.logo {
+    display: flex;
+    align-items: center;
+}
+.h1 {
+    img {
+        display: block;
+    }
+}
+.h2 {
+    position: relative;
+    top: 2px;
+    margin-left: 32px + 1px; // the dividing line occupys 1px
+    font-size: 24px;
+    font-family: "logo";
+    font-display: swap;
+    -webkit-font-smoothing: antialiased;
+    font-weight: normal;
+    color: #505050;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -16px;
+        margin-top: -12px;
+        width: 1px;
+        height: 24px;
+        background-color: rgba(0, 0, 0, .2);
+    }
+}
+@font-face {
+    font-family: "logo";
+    src: url("../assets/font/logo.eot");
+    src: url("../assets/font/logo.eot?#iefix") format("embedded-opentype"),
+        url("../assets/font/logo.woff") format("woff"),
+        url("../assets/font/logo.ttf") format("truetype"),
+        url("../assets/font/logo.svg#汉仪旗黑X1-45W") format("svg");
+    font-style: normal;
+    font-weight: normal;
+}
